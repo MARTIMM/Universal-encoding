@@ -1,0 +1,18 @@
+{
+  "authors": [ "Marcel Timmerman"],
+  "description":                          "Universal encoder/decoder",
+  "name":                                 "Universal::Encoding",
+  "version":                              "0.0.1",
+  "license":                              "Artistic-2.0",
+  "perl":                                 "6",
+  "depends": [
+  ],
+  "test-depends": [ "Test::META"],
+  "build-depends": [ ],
+  "tags": [ "encoding", "decoding"],
+  "provides": {
+    "Encoding":                           "lib/Encoding.pm6",
+    "Encoding::Engine":                   "lib/Encoding/Engine.pm6"
+  },
+  "source-url":                           "git://github.com/MARTIMM/Library.git"
+}
