@@ -38,13 +38,11 @@ class Engine {
   }
 
   #----------------------------------------------------------------------------
-  method encode ( Any $value, List $pattern, Map $pattern-map ) {
+  method encode ( Any $value, List $pattern, Map $pattern-map = Map.new() ) {
 
     for |$pattern -> $p {
-note "Patt: $p, ", $p.WHAT;
-#      my UEncoding::PatternCode $pattern-code = ::("UEncoding::$p");
-      my $pattern-code = try { ::("UEncoding::$p") };
-note "Patt code: $pattern-code, ", $pattern-code.WHAT;
+      my $pattern-code = try { ::("UEncoding::$p") } // $p;
+#note "Patt code: $pattern-code, ", $pattern-code.WHAT;
 
       given $pattern-code {
         when UEncoding::STRING {
@@ -56,12 +54,40 @@ note "Patt code: $pattern-code, ", $pattern-code.WHAT;
         }
 
         default {
+          # test for map name in pattern map
           if ? $pattern-map{$p} {
             self.encode( $value, $pattern-map{$p}, $pattern-map);
           }
 
           else {
-            die X::UEncoding.new(:message("No such pattern code: $p"));
+            # try provided class first
+            my $class-name = "UEncoding::Types::$p";
+            my $pck = try { require ::($class-name); }
+#note "$class-name -> ", $pck.^name;
+
+            # maybe then user provided class
+            if $pck.^name eq 'Any' {
+              $class-name = $p;
+              $pck = try { require ::($class-name); }
+#note "$class-name -> ", $pck.^name;
+            }
+
+            # when we get an object, check for the encode method
+            if $pck.^name ne 'Any' {
+              my $obj = $pck.new;
+
+              unless $obj.^can('encode') {
+                die X::UEncoding.new(
+                  :message("Class $class-name did not provide method encode")
+                );
+              }
+
+              $obj.encode($value);
+            }
+
+            else {
+              die X::UEncoding.new(:message("No such pattern code or object: $p"));
+            }
           }
         }
       }
