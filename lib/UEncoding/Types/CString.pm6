@@ -20,8 +20,6 @@ class Types::CString does UEncoding::ED {
       :message('encode, cstring, Forbidden 0x00 sequence')
     ) if $value ~~ /\x00/;
 
-
-
     my List $v = (|$value.encode(), 0x00);
     self.store-value( $v, :$init);
   }
