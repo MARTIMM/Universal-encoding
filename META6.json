@@ -1,7 +1,7 @@
 {
   "authors": [ "Marcel Timmerman"],
   "description":                          "Universal encoder/decoder",
-  "name":                                 "Universal::Encoding",
+  "name":                                 "UEncoding",
   "version":                              "0.0.1",
   "license":                              "Artistic-2.0",
   "perl":                                 "6",
@@ -11,8 +11,9 @@
   "build-depends": [ ],
   "tags": [ "encoding", "decoding"],
   "provides": {
-    "Encoding":                           "lib/Encoding.pm6",
-    "Encoding::Engine":                   "lib/Encoding/Engine.pm6"
+    "UEncoding":                          "lib/UEncoding.pm6",
+    "UEncoding::Engine":                  "lib/UEncoding/Engine.pm6",
+    "UEncoding::Types::CString":          "lib/UEncoding/Types/CString.pm6"
   },
-  "source-url":                           "git://github.com/MARTIMM/Library.git"
+  "source-url":                           "git://github.com/MARTIMM/Universal-encoding.git"
 }
