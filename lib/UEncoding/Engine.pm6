@@ -100,8 +100,8 @@ class Engine {
       my $pattern-code = try { ::("UEncoding::$p") } // $p;
 
 #note "Patt code: $pattern-code, ", $pattern-code.WHAT, ', ',
-      $!mapped-procedures{$pattern-code}, ', ',
-      $!user-procedures{$pattern-code};
+#      $!mapped-procedures{$pattern-code}, ', ',
+#      $!user-procedures{$pattern-code};
 
       # If it is a package defined name, its code must be provided
       if $pattern-code ~~ UEncoding::PatternCode {
