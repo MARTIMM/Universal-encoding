@@ -2,7 +2,7 @@
   "authors": [ "Marcel Timmerman"],
   "description":                          "Universal encoder/decoder",
   "name":                                 "UEncoding",
-  "version":                              "0.0.1",
+  "version":                              "0.1.0",
   "license":                              "Artistic-2.0",
   "perl":                                 "6",
   "depends": [

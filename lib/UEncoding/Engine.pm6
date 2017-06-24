@@ -89,12 +89,14 @@ class Engine {
   }
 
   #----------------------------------------------------------------------------
+#TODO concurrency
+
   method encode ( $vals, $patts, Map $pattern-map = Map.new() ) {
 
     my Array $values = $vals ~~ Array ?? $vals !! [$vals];
     my List $pattern = $patts ~~ List ?? $patts !! List.new($patts);
 
-    for |$pattern -> $p {
+    for @$pattern -> $p {
 
       # check if $p is an enum value of UEncoding::PatternCode
       my $pattern-code = try { ::("UEncoding::$p") } // $p;

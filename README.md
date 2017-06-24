@@ -1,7 +1,6 @@
 # Universal::Encoder - Encoding and decoding library
 
-[![Build Status](https://travis-ci.org/MARTIMM/Universal-encoding.svg?branch=master)](https://travis-ci.org/MARTIMM/Universal-encoding)
-[![License](http://martimm.github.io/label/License-label.svg)](http://www.perlfoundation.org/artistic_license_2_0)
+[![Build Status](https://travis-ci.org/MARTIMM/Universal-encoding.svg?branch=master)](https://travis-ci.org/MARTIMM/Universal-encoding) [![License](http://martimm.github.io/label/License-label.svg)](http://www.perlfoundation.org/artistic_license_2_0)
 
 ## Description
 
